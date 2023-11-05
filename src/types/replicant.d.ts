@@ -1,3 +1,1 @@
-export type ReplicantMap = {
-  count: number
-}
+export type ReplicantMap = {}

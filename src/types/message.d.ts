@@ -1,5 +1,1 @@
-export type MessageMap = {
-  countUp: {
-    result: boolean
-  }
-}
+export type MessageMap = {}

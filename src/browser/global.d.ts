@@ -1,7 +1,8 @@
-import type { NodeCG } from './nodecg'
+import type { BundleNodeCG } from './nodecg'
+import type { SpeedControlNodeCG } from './speedcontrol'
 
 declare global {
   interface Window {
-    nodecg: NodeCG
+    nodecg: BundleNodeCG & SpeedControlNodeCG
   }
 }
