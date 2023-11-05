@@ -3,5 +3,6 @@ services:
     image: potdig/${LAYOUTS_NAME}
     build:
       context: .
+      target: bundle
     ports:
       - 9090:9090
