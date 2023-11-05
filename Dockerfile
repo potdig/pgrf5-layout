@@ -39,6 +39,5 @@ WORKDIR /app
 RUN mkdir -p ./nodecg/bundles/${LAYOUTS_NAME}/ &&\
     mkdir -p ./nodecg/assets/${LAYOUTS_NAME}/materials/ &&\
     cp -rp /build/dist/* ./nodecg/bundles/${LAYOUTS_NAME}/ &&\
-    cp -rp /build/public/* ./nodecg/assets/${LAYOUTS_NAME}/materials/ &&\
-    cp -rp /build/package-nodecg.json ./nodecg/bundles/${LAYOUTS_NAME}/package.json
+    cp -rp /build/public/* ./nodecg/assets/${LAYOUTS_NAME}/materials/
 WORKDIR /app/nodecg
