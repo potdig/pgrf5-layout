@@ -4,5 +4,19 @@ services:
     build:
       context: .
       target: bundle
+    profiles:
+      - prod
+    ports:
+      - 9090:9090
+  nodecg-dev:
+    image: potdig/${LAYOUTS_NAME}
+    build:
+      context: .
+      target: base
+    profiles:
+      - dev
+    volumes:
+      - ./dist:/app/nodecg/bundles/${LAYOUTS_NAME}
+      - ./public:/app/nodecg/assets/${LAYOUTS_NAME}/materials
     ports:
       - 9090:9090
