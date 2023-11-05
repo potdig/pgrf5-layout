@@ -3,13 +3,7 @@
   "version": "1.0.0",
   "nodecg": {
     "compatibleRange": "^2.0.0",
-    "dashboardPanels": [],
     "graphics": [
-      {
-        "file": "index.html",
-        "width": 1920,
-        "height": 1080
-      },
       {
         "file": "setup.html",
         "width": 1920,
