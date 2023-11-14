@@ -1,5 +1,5 @@
 {
-  "name": "nodecg-vite-ts-svelte-template",
+  "name": "pgrf4-layout",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -21,5 +21,34 @@
     "typescript": "^5.2.2",
     "vite": "^4.1.0",
     "vite-plugin-static-copy": "^0.17.0"
+  },
+  "nodecg": {
+    "compatibleRange": "^2.0.0",
+    "graphics": [
+      {
+        "file": "setup.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "assetCategories": [
+      {
+        "name": "materials",
+        "title": "Materials",
+        "allowedTypes": [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png",
+          "svg"
+        ]
+      }
+    ],
+    "mount": [
+      {
+        "directory": "assets",
+        "endpoint": "assets"
+      }
+    ]
   }
 }
