@@ -1,10 +1,31 @@
 <script lang="ts">
   import { runDataArray } from '../store/speedcontrol'
   import Container from './lib/Container.svelte'
-  $: runNames = $runDataArray.map(runDatum => runDatum.game)
 
   // 9*7
   const boxes = [...Array(63)].map((_, i) => i)
+
+  let titleUpNext: HTMLElement
+  let titleComingSoon1: HTMLElement
+  let titleComingSoon2: HTMLElement
+
+  $: runNames = $runDataArray.map(runDatum => runDatum.game)
+  $: scale(titleUpNext, 1100)
+  $: scale(titleComingSoon1, 900)
+  $: scale(titleComingSoon2, 900)
+
+  function scale(e: HTMLElement, maxWidth: number) {
+    if (!e) {
+      return
+    }
+
+    const titleWidth = e.getBoundingClientRect().width
+    if (titleWidth > maxWidth) {
+      e.style.transform = `scale(${maxWidth / titleWidth})`
+    } else {
+      e.style.transform = ''
+    }
+  }
 </script>
 
 <Container>
@@ -24,7 +45,11 @@
       <p>next</p>
     </div>
     <div id="up-next">
-      <p class="title">Sandtrix</p>
+      <p class="title">
+        <span bind:this={titleUpNext}>
+          Untitled Goose Game 〜いたずらガチョウがやって来た！〜
+        </span>
+      </p>
       <p class="category">Clear 40 Green</p>
       <div class="row">
         <p class="runner"><span class="label">Runner: </span>seri</p>
@@ -41,10 +66,18 @@
       <p>soon</p>
     </div>
     <div id="coming-soon">
-      <p class="title">パズルボブル エブリバブル!</p>
+      <p class="title">
+        <span bind:this={titleComingSoon1}
+          >Untitled Goose Game 〜いたずらガチョウがやって来た！〜</span
+        >
+      </p>
       <p class="category">パズルボブル vs インベーダー</p>
       <div class="divider" />
-      <p class="title">すってはっくん（ロムカセット版）</p>
+      <p class="title">
+        <span bind:this={titleComingSoon2}>
+          Untitled Goose Game 〜いたずらガチョウがやって来た！〜
+        </span>
+      </p>
       <p class="category">All Stages</p>
     </div>
   </div>
@@ -126,10 +159,19 @@
     gap: 1.2em;
   }
 
+  .title {
+    white-space: nowrap;
+
+    span {
+      transform-origin: left;
+      display: inline-block;
+    }
+  }
+
   #up-next {
     grid-row: 3;
     grid-column: 3 / 8;
-    margin-inline: 2em;
+    margin-inline: 50px;
     font-size: 1.8em;
 
     .title {
@@ -146,7 +188,7 @@
   #coming-soon {
     grid-row: 4;
     grid-column: 4 / 8;
-    margin-inline: 2em;
+    margin-inline: 30px;
     font-size: 1.4em;
 
     .title {
