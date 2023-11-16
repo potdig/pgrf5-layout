@@ -19,16 +19,33 @@
     {#each boxes as box}
       <div class="square" />
     {/each}
+    <div id="up-next-label" class="square">
+      <p>Up</p>
+      <p>next</p>
+    </div>
     <div id="up-next">
-      <p id="title">Sandtrix</p>
-      <p id="category">Clear 40 Green</p>
-      <div id="people">
-        <p id="runner"><span class="label">Runner: </span>seri</p>
-        <p id="commentator"><span class="label">Commentator: </span>hebo-MAI</p>
+      <p class="title">Sandtrix</p>
+      <p class="category">Clear 40 Green</p>
+      <div class="row">
+        <p class="runner"><span class="label">Runner: </span>seri</p>
+        <p class="commentator">
+          <span class="label">Commentator: </span>hebo-MAI
+        </p>
       </div>
       <!-- {#each runNames as runName}
         <li>{runName}</li>
       {/each} -->
+    </div>
+    <div id="coming-soon-label" class="square">
+      <p>Coming</p>
+      <p>soon</p>
+    </div>
+    <div id="coming-soon">
+      <p class="title">パズルボブル エブリバブル!</p>
+      <p class="category">パズルボブル vs インベーダー</p>
+      <div class="divider" />
+      <p class="title">すってはっくん（ロムカセット版）</p>
+      <p class="category">All Stages</p>
     </div>
   </div>
 </Container>
@@ -48,12 +65,42 @@
     grid-template-rows: repeat($columnSize, $boxSize);
     grid-template-columns: repeat($columnSize, $boxSize);
     align-items: center;
+  }
 
-    // 5 boxes
-    #up-next {
-      grid-row: 3;
-      grid-column: 3 / 8;
-    }
+  .square {
+    width: $boxSize - $boxMargin * 2;
+    height: $boxSize - $boxMargin * 2;
+    margin: $boxMargin;
+    background-color: gray;
+    border-radius: 24px;
+  }
+
+  #up-next-label,
+  #coming-soon-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #555555;
+    font-family: 'Staatliches';
+    line-height: 1em;
+  }
+
+  #up-next-label {
+    font-size: 4.8em;
+    grid-row: 3;
+    grid-column: 2;
+  }
+
+  #coming-soon-label {
+    font-size: 3.6em;
+    grid-row: 4;
+    grid-column: 3;
+  }
+
+  img {
+    width: $boxSize;
   }
 
   #ome {
@@ -74,35 +121,44 @@
     grid-column: 4;
   }
 
+  .row {
+    display: flex;
+    gap: 1.2em;
+  }
+
   #up-next {
+    grid-row: 3;
+    grid-column: 3 / 8;
     margin-inline: 2em;
     font-size: 1.8em;
 
-    #title {
+    .title {
       font-size: 2em;
       font-weight: bold;
       line-height: 1.2em;
     }
 
-    #people {
-      display: flex;
-      gap: 1.2em;
-
-      .label {
-        font-family: 'Staatliches';
-      }
+    .label {
+      font-family: 'Staatliches';
     }
   }
 
-  img {
-    width: $boxSize;
+  #coming-soon {
+    grid-row: 4;
+    grid-column: 4 / 8;
+    margin-inline: 2em;
+    font-size: 1.4em;
+
+    .title {
+      font-size: 1.6em;
+      font-weight: bold;
+      line-height: 1.2em;
+    }
   }
 
-  .square {
-    width: $boxSize - $boxMargin * 2;
-    height: $boxSize - $boxMargin * 2;
-    margin: $boxMargin;
-    background-color: gray;
-    border-radius: 24px;
+  .divider {
+    width: 100%;
+    margin-block: 8px;
+    border-bottom: 1px solid gray;
   }
 </style>
