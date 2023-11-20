@@ -84,8 +84,8 @@
 </Container>
 
 <style lang="scss">
-  $boxSize: 240px;
-  $boxMargin: 10px;
+  @use './stylesheets/box';
+
   $columnSize: 9;
 
   #grid {
@@ -93,19 +93,11 @@
     position: relative;
     top: -200px;
     left: -200px;
-    width: calc($boxSize * $columnSize);
-    height: calc($boxSize * $columnSize);
-    grid-template-rows: repeat($columnSize, $boxSize);
-    grid-template-columns: repeat($columnSize, $boxSize);
+    width: calc(box.$size * $columnSize);
+    height: calc(box.$size * $columnSize);
+    grid-template-rows: repeat($columnSize, box.$size);
+    grid-template-columns: repeat($columnSize, box.$size);
     align-items: center;
-  }
-
-  .box {
-    width: $boxSize - $boxMargin * 2;
-    height: $boxSize - $boxMargin * 2;
-    margin: $boxMargin;
-    background-color: gray;
-    border-radius: 24px;
   }
 
   #up-next-label,
@@ -133,7 +125,7 @@
   }
 
   img {
-    width: $boxSize;
+    width: box.$size;
   }
 
   #ome {
