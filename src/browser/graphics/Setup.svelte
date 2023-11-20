@@ -1,6 +1,7 @@
 <script lang="ts">
   import { runDataArray } from '../store/speedcontrol'
   import Container from './lib/Container.svelte'
+  import SlideBox from './lib/setup/SlideBox.svelte'
 
   // 9*7
   const boxes = [...Array(63)].map((_, i) => i)
@@ -37,9 +38,6 @@
       src="/assets/pgrf4-layout/materials/pgrf4.png"
       alt="PGRF4"
     />
-    {#each boxes as box}
-      <div class="box" />
-    {/each}
     <div id="up-next-label" class="box">
       <p>Up</p>
       <p>next</p>
@@ -80,6 +78,10 @@
       </p>
       <p class="category">All Stages</p>
     </div>
+    <SlideBox --row="5" --col="8" />
+    {#each boxes as box}
+      <div class="box" />
+    {/each}
   </div>
 </Container>
 
@@ -87,17 +89,20 @@
   @use './stylesheets/box';
 
   $columnSize: 9;
+  $boxSize: 220px;
+  $boxMargin: 10px;
 
   #grid {
     display: grid;
     position: relative;
     top: -200px;
     left: -200px;
-    width: calc(box.$size * $columnSize);
-    height: calc(box.$size * $columnSize);
-    grid-template-rows: repeat($columnSize, box.$size);
-    grid-template-columns: repeat($columnSize, box.$size);
+    width: calc($boxSize * $columnSize);
+    height: calc($boxSize * $columnSize);
+    grid-template-rows: repeat($columnSize, $boxSize);
+    grid-template-columns: repeat($columnSize, $boxSize);
     align-items: center;
+    gap: $boxMargin * 2;
   }
 
   #up-next-label,
@@ -125,7 +130,7 @@
   }
 
   img {
-    width: box.$size;
+    width: $boxSize;
   }
 
   #ome {
