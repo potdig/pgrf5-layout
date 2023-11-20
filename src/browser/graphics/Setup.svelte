@@ -38,9 +38,9 @@
       alt="PGRF4"
     />
     {#each boxes as box}
-      <div class="square" />
+      <div class="box" />
     {/each}
-    <div id="up-next-label" class="square">
+    <div id="up-next-label" class="box">
       <p>Up</p>
       <p>next</p>
     </div>
@@ -61,7 +61,7 @@
         <li>{runName}</li>
       {/each} -->
     </div>
-    <div id="coming-soon-label" class="square">
+    <div id="coming-soon-label" class="box">
       <p>Coming</p>
       <p>soon</p>
     </div>
@@ -100,7 +100,7 @@
     align-items: center;
   }
 
-  .square {
+  .box {
     width: $boxSize - $boxMargin * 2;
     height: $boxSize - $boxMargin * 2;
     margin: $boxMargin;
