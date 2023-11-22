@@ -1,6 +1,6 @@
 import { derived, readable, type Readable } from 'svelte/store'
 import type { RunData } from '~/types/speedcontrol/run-data'
-import type { SpeedControlNodeCG } from '../speedcontrol'
+import type { SpeedControlNodeCG } from '~/browser/speedcontrol'
 import type { ActiveRunData } from '~/types/speedcontrol/replicant'
 
 const speedcontrol = window.nodecg as SpeedControlNodeCG

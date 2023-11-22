@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { RunData } from '~/types/speedcontrol/run-data'
-  import { runsOnSetup } from '../store/speedcontrol'
+  import { runsOnSetup } from '../store/speedcontrol/run'
   import Container from './lib/Container.svelte'
   import SlideBox from './lib/setup/SlideBox.svelte'
   import TextFitSnugly from './lib/setup/TextFitSnugly.svelte'
