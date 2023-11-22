@@ -1,16 +1,13 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import type { RunData } from '~/types/speedcontrol/run-data'
   import { runsOnSetup } from '../store/speedcontrol'
   import Container from './lib/Container.svelte'
   import SlideBox from './lib/setup/SlideBox.svelte'
-  import { beforeUpdate, onMount, tick } from 'svelte'
+  import TextFitSnugly from './lib/setup/TextFitSnugly.svelte'
 
   // 9*7
   const boxes = [...Array(63)].map((_, i) => i)
-
-  let titleUpNext: HTMLElement
-  let titleComingSoon1: HTMLElement
-  let titleComingSoon2: HTMLElement
 
   let divUpNext: HTMLElement
   let divComingSoon: HTMLElement
@@ -22,31 +19,13 @@
   const runnersOf = (run: RunData) =>
     run?.teams.flatMap(team => team.players.map(player => player.name))
 
-  beforeUpdate(async () => {
-    await tick()
+  let maxWidthUpNext: number
+  let maxWidthComingSoon: number
 
-    const maxWidthUpNext = divUpNext.getBoundingClientRect().width
-    const maxWidthComingSoon = divComingSoon.getBoundingClientRect().width
-
-    scale(titleUpNext, maxWidthUpNext)
-    scale(titleComingSoon1, maxWidthComingSoon)
-    scale(titleComingSoon2, maxWidthComingSoon)
+  onMount(async () => {
+    maxWidthUpNext = divUpNext.getBoundingClientRect().width
+    maxWidthComingSoon = divComingSoon.getBoundingClientRect().width
   })
-
-  function scale(e: HTMLElement, maxWidth: number) {
-    if (!e) {
-      return
-    }
-
-    const currentScale = parseFloat(e.style.fontSize.replace('em', ''))
-    const titleWidth = e.getBoundingClientRect().width
-    if (titleWidth / currentScale > maxWidth) {
-      return
-    }
-
-    const scale = maxWidth / titleWidth
-    e.style.fontSize = scale > 1 ? '' : `${scale}em`
-  }
 </script>
 
 <Container>
@@ -64,9 +43,9 @@
     </div>
     <div id="up-next" bind:this={divUpNext}>
       <p class="title">
-        <span bind:this={titleUpNext}>
+        <TextFitSnugly maxWidth={maxWidthUpNext}>
           {runUpNext?.game}
-        </span>
+        </TextFitSnugly>
       </p>
       {#if runUpNext?.category}
         <p class="category">{runUpNext?.category}</p>
@@ -88,7 +67,9 @@
     <div id="coming-soon" bind:this={divComingSoon}>
       <div>
         <p class="title">
-          <span bind:this={titleComingSoon1}>{runComingSoon1?.game}</span>
+          <TextFitSnugly maxWidth={maxWidthComingSoon}>
+            {runComingSoon1?.game}
+          </TextFitSnugly>
         </p>
         {#if runComingSoon1?.category}
           <p class="category">{runComingSoon1?.category}</p>
@@ -98,9 +79,9 @@
       {#if runComingSoon2}
         <div>
           <p class="title">
-            <span bind:this={titleComingSoon2}>
+            <TextFitSnugly maxWidth={maxWidthComingSoon}>
               {runComingSoon2?.game}
-            </span>
+            </TextFitSnugly>
           </p>
           {#if runComingSoon2?.category}
             <p class="category">{runComingSoon2?.category}</p>
@@ -188,11 +169,6 @@
 
   .title {
     white-space: nowrap;
-
-    span {
-      transform-origin: left;
-      display: inline-block;
-    }
   }
 
   #up-next {
