@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { runDataArray } from '../store/speedcontrol'
+  import type { RunData } from '~/types/speedcontrol/run-data'
+  import { runsOnSetup } from '../store/speedcontrol'
   import Container from './lib/Container.svelte'
   import SlideBox from './lib/setup/SlideBox.svelte'
+  import { beforeUpdate, onMount, tick } from 'svelte'
 
   // 9*7
   const boxes = [...Array(63)].map((_, i) => i)
@@ -10,22 +12,40 @@
   let titleComingSoon1: HTMLElement
   let titleComingSoon2: HTMLElement
 
-  $: runNames = $runDataArray.map(runDatum => runDatum.game)
-  $: scale(titleUpNext, 1100)
-  $: scale(titleComingSoon1, 900)
-  $: scale(titleComingSoon2, 900)
+  let divUpNext: HTMLElement
+  let divComingSoon: HTMLElement
+
+  $: runUpNext = $runsOnSetup[0]
+  $: runComingSoon1 = $runsOnSetup[1]
+  $: runComingSoon2 = $runsOnSetup[2]
+
+  const runnersOf = (run: RunData) =>
+    run?.teams.flatMap(team => team.players.map(player => player.name))
+
+  beforeUpdate(async () => {
+    await tick()
+
+    const maxWidthUpNext = divUpNext.getBoundingClientRect().width
+    const maxWidthComingSoon = divComingSoon.getBoundingClientRect().width
+
+    scale(titleUpNext, maxWidthUpNext)
+    scale(titleComingSoon1, maxWidthComingSoon)
+    scale(titleComingSoon2, maxWidthComingSoon)
+  })
 
   function scale(e: HTMLElement, maxWidth: number) {
     if (!e) {
       return
     }
 
+    const currentScale = parseFloat(e.style.fontSize.replace('em', ''))
     const titleWidth = e.getBoundingClientRect().width
-    if (titleWidth > maxWidth) {
-      e.style.transform = `scale(${maxWidth / titleWidth})`
-    } else {
-      e.style.transform = ''
+    if (titleWidth / currentScale > maxWidth) {
+      return
     }
+
+    const scale = maxWidth / titleWidth
+    e.style.fontSize = scale > 1 ? '' : `${scale}em`
   }
 </script>
 
@@ -42,41 +62,51 @@
       <p>Up</p>
       <p>next</p>
     </div>
-    <div id="up-next">
+    <div id="up-next" bind:this={divUpNext}>
       <p class="title">
         <span bind:this={titleUpNext}>
-          Untitled Goose Game 〜いたずらガチョウがやって来た！〜
+          {runUpNext?.game}
         </span>
       </p>
-      <p class="category">Clear 40 Green</p>
-      <div class="row">
-        <p class="runner"><span class="label">Runner: </span>seri</p>
-        <p class="commentator">
-          <span class="label">Commentator: </span>hebo-MAI
-        </p>
-      </div>
-      <!-- {#each runNames as runName}
-        <li>{runName}</li>
-      {/each} -->
+      {#if runUpNext?.category}
+        <p class="category">{runUpNext?.category}</p>
+        <div class="row">
+          <p class="runner">
+            <span class="label">Runner: </span>
+            {runnersOf(runUpNext)?.join(' / ')}
+          </p>
+          <p class="commentator">
+            <span class="label">Commentator: </span>hebo-MAI
+          </p>
+        </div>
+      {/if}
     </div>
     <div id="coming-soon-label" class="box">
       <p>Coming</p>
       <p>soon</p>
     </div>
-    <div id="coming-soon">
-      <p class="title">
-        <span bind:this={titleComingSoon1}
-          >Untitled Goose Game 〜いたずらガチョウがやって来た！〜</span
-        >
-      </p>
-      <p class="category">パズルボブル vs インベーダー</p>
+    <div id="coming-soon" bind:this={divComingSoon}>
+      <div>
+        <p class="title">
+          <span bind:this={titleComingSoon1}>{runComingSoon1?.game}</span>
+        </p>
+        {#if runComingSoon1?.category}
+          <p class="category">{runComingSoon1?.category}</p>
+        {/if}
+      </div>
       <div class="divider" />
-      <p class="title">
-        <span bind:this={titleComingSoon2}>
-          Untitled Goose Game 〜いたずらガチョウがやって来た！〜
-        </span>
-      </p>
-      <p class="category">All Stages</p>
+      {#if runComingSoon2}
+        <div>
+          <p class="title">
+            <span bind:this={titleComingSoon2}>
+              {runComingSoon2?.game}
+            </span>
+          </p>
+          {#if runComingSoon2?.category}
+            <p class="category">{runComingSoon2?.category}</p>
+          {/if}
+        </div>
+      {/if}
     </div>
     <SlideBox --row="5" --col="8" />
     {#each boxes as box}
@@ -187,6 +217,8 @@
     grid-column: 4 / 8;
     margin-inline: 30px;
     font-size: 1.4em;
+    display: grid;
+    grid-template-rows: 1fr max-content 1fr;
 
     .title {
       font-size: 1.6em;

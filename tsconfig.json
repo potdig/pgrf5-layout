@@ -15,7 +15,8 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
-    }
+    },
+    "strict": true
   },
   "include": [
     "src/**/*.d.ts",
