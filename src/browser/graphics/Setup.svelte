@@ -5,6 +5,7 @@
   import Container from './lib/Container.svelte'
   import SlideBox from './lib/setup/SlideBox.svelte'
   import TextFitSnugly from './lib/setup/TextFitSnugly.svelte'
+  import { commentatorsOf } from '../store/additions'
 
   // 9*7
   const boxes = [...Array(63)].map((_, i) => i)
@@ -15,6 +16,11 @@
   $: runUpNext = $runsOnSetup[0]
   $: runComingSoon1 = $runsOnSetup[1]
   $: runComingSoon2 = $runsOnSetup[2]
+
+  $: commentatorsUpNext = commentatorsOf(runUpNext?.externalID ?? '')
+  $: commentatorNamesUpNext = $commentatorsUpNext
+    .map(commentator => commentator.name)
+    .join(' / ')
 
   const runnersOf = (run: RunData) =>
     run?.teams.flatMap(team => team.players.map(player => player.name))
@@ -54,9 +60,11 @@
             <span class="label">Runner: </span>
             {runnersOf(runUpNext)?.join(' / ')}
           </p>
-          <p class="commentator">
-            <span class="label">Commentator: </span>hebo-MAI
-          </p>
+          {#if commentatorNamesUpNext.length > 0}
+            <p class="commentator">
+              <span class="label">Commentator: </span>{commentatorNamesUpNext}
+            </p>
+          {/if}
         </div>
       {/if}
     </div>
