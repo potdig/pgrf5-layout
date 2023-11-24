@@ -41,15 +41,15 @@
     text-align: right;
     font-family: 'Nova Mono', sans-serif;
     font-weight: bold;
-  }
 
-  .time.suspend {
-    color: rgba(0, 0, 0, 50%);
-  }
+    &.suspend {
+      color: rgba(0, 0, 0, 50%);
+    }
 
-  .time.complete {
-    color: rgb(0, 65, 255);
-    animation: blink 1s 3 linear;
+    &.complete {
+      color: rgb(0, 65, 255);
+      animation: blink 1s 3 linear;
+    }
   }
 
   @keyframes blink {
