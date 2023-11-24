@@ -22,6 +22,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         'graphics/setup': resolve(__dirname, 'graphics/setup.html'),
+        'graphics/hd-solo': resolve(__dirname, 'graphics/hd-solo.html'),
       },
     },
   },

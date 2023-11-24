@@ -1,13 +1,14 @@
 import { derived, readable, type Readable } from 'svelte/store'
 import type { AdditionsNodeCG } from '../additions'
 import type { Commentator } from '~/types/additions/commentatorArray'
+import type { SpeedcontrolUserAddition } from '~/types/additions/speedcontrolUserAdditionArray'
 
-const additions = window.nodecg as AdditionsNodeCG
+const speedcontrolUserAdditions = window.nodecg as AdditionsNodeCG
 
 const commentators: Readable<Commentator[]> = readable<Commentator[]>(
   [],
   set => {
-    additions
+    speedcontrolUserAdditions
       .Replicant('commentatorArray', 'speedcontrol-additions')
       .on('change', value => {
         set(value)
@@ -22,4 +23,12 @@ const commentatorsOf = (gameId: string) =>
     )
   )
 
-export { commentatorsOf }
+const additions: Readable<SpeedcontrolUserAddition[]> = readable([], set => {
+  speedcontrolUserAdditions
+    .Replicant('speedcontrolUserAdditionArray', 'speedcontrol-additions')
+    .on('change', value => {
+      set(value)
+    })
+})
+
+export { commentatorsOf, additions }

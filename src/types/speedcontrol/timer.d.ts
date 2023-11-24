@@ -1,6 +1,9 @@
+export type TimerState = 'stopped' | 'running' | 'paused' | 'finished'
+export type TeamResult = 'forfeit' | 'completed'
+
 export interface Timer {
   time: string
-  state: 'stopped' | 'running' | 'paused' | 'finished'
+  state: TimerState
   milliseconds: number
   timestamp: number
   teamFinishTimes: {
@@ -10,7 +13,7 @@ export interface Timer {
 
 export interface TeamFinishTime {
   time: string
-  state: 'forfeit' | 'completed'
+  state: TeamResult
   milliseconds: number
   timestamp: number
 }
