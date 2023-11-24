@@ -2,13 +2,20 @@
   export let row: number | undefined = undefined
   export let col: number | undefined = undefined
 
-  $: caseStyle = row && col ? `grid-row: ${row}; grid-column: ${col}` : ''
+  const rotationCount = Math.floor(Math.random() * 4)
+  $: gridRowCol = row && col ? `grid-row: ${row}; grid-column: ${col}` : ''
+
+  $: rotation = `rotate(${90 * rotationCount}deg)`
+  $: scaleX = `scaleX(${Math.random() > 0.5 ? 1 : -1})`
+  $: transform = `transform: ${rotation} ${scaleX}`
+
+  $: caseStyle = [gridRowCol, transform].join('; ')
 
   let box1 = 0
   let box2 = 1
   let box3 = 2
 
-  let animationDuration = 1000 + Math.floor(Math.random() * 1000)
+  const animationDuration = 1000 + Math.floor(Math.random() * 1000)
 
   window.setTimeout(
     () =>
