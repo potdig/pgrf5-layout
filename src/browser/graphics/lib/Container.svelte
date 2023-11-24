@@ -11,5 +11,6 @@
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
+    position: relative;
   }
 </style>

@@ -3,9 +3,10 @@
   import type { RunData } from '~/types/speedcontrol/run-data'
   import { runsOnSetup } from '../store/speedcontrol/run'
   import Container from './lib/Container.svelte'
-  import SlideBox from './lib/setup/SlideBox.svelte'
+  import SlideBox from './lib/SlideBox.svelte'
   import TextFitSnugly from './lib/setup/TextFitSnugly.svelte'
   import { commentatorsOf } from '../store/additions'
+  import Box from './lib/Box.svelte'
 
   // 9*7
   const boxes = [...Array(63)].map((_, i) => i)
@@ -97,9 +98,9 @@
         </div>
       {/if}
     </div>
-    <SlideBox --row="5" --col="8" />
+    <SlideBox row={5} col={8} />
     {#each boxes as box}
-      <div class="box" />
+      <Box />
     {/each}
   </div>
 </Container>

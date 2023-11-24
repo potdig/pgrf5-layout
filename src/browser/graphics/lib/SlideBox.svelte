@@ -1,32 +1,39 @@
 <script lang="ts">
+  export let row: number | undefined = undefined
+  export let col: number | undefined = undefined
+
+  $: caseStyle = row && col ? `grid-row: ${row}; grid-column: ${col}` : ''
+
   let box1 = 0
   let box2 = 1
   let box3 = 2
+
+  let animationDuration = 1000 + Math.floor(Math.random() * 1000)
 
   window.setTimeout(
     () =>
       window.setInterval(() => {
         box1 = (box1 + 1) % 4
-      }, 3000),
-    3000
+      }, animationDuration * 3),
+    animationDuration * 3
   )
   window.setTimeout(
     () =>
       window.setInterval(() => {
         box2 = (box2 + 1) % 4
-      }, 3000),
-    2000
+      }, animationDuration * 3),
+    animationDuration * 2
   )
   window.setTimeout(
     () =>
       window.setInterval(() => {
         box3 = (box3 + 1) % 4
-      }, 3000),
-    1000
+      }, animationDuration * 3),
+    animationDuration
   )
 </script>
 
-<div class="case">
+<div class="case" style={caseStyle}>
   <div class="start-area">
     <div class="box b{box1 + 1}" />
     <div class="box b{box2 + 1}" />
@@ -54,8 +61,6 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: $gap;
-    grid-row: var(--row, 1);
-    grid-column: var(--col, 1);
   }
 
   .start-area {
