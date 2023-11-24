@@ -11,7 +11,7 @@
     {#if Math.random() < 0.8}
       <Box />
     {:else}
-      <SlideBox />
+      <SlideBox animate={false} />
     {/if}
   {/each}
 </div>

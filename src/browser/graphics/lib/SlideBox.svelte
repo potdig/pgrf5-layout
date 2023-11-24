@@ -1,4 +1,6 @@
 <script lang="ts">
+  export let animate: boolean = true
+
   const rotationCount = Math.floor(Math.random() * 4)
   const rotation = `rotate(${90 * rotationCount}deg)`
   const scaleX = `scaleX(${Math.random() > 0.5 ? 1 : -1})`
@@ -14,27 +16,29 @@
 
   const animationDuration = 1000 + Math.floor(Math.random() * 1000)
 
-  window.setTimeout(
-    () =>
-      window.setInterval(() => {
-        box1 = (box1 + 1) % 4
-      }, animationDuration * 3),
-    animationDuration * 3
-  )
-  window.setTimeout(
-    () =>
-      window.setInterval(() => {
-        box2 = (box2 + 1) % 4
-      }, animationDuration * 3),
-    animationDuration * 2
-  )
-  window.setTimeout(
-    () =>
-      window.setInterval(() => {
-        box3 = (box3 + 1) % 4
-      }, animationDuration * 3),
-    animationDuration
-  )
+  if (animate) {
+    window.setTimeout(
+      () =>
+        window.setInterval(() => {
+          box1 = (box1 + 1) % 4
+        }, animationDuration * 3),
+      animationDuration * 3
+    )
+    window.setTimeout(
+      () =>
+        window.setInterval(() => {
+          box2 = (box2 + 1) % 4
+        }, animationDuration * 3),
+      animationDuration * 2
+    )
+    window.setTimeout(
+      () =>
+        window.setInterval(() => {
+          box3 = (box3 + 1) % 4
+        }, animationDuration * 3),
+      animationDuration
+    )
+  }
 </script>
 
 <div class="case" style={caseStyle}>
