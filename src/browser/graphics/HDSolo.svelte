@@ -54,9 +54,7 @@
     </div>
     <Video {width} {height}></Video>
   </main>
-  <footer>
-    <Footer></Footer>
-  </footer>
+  <Footer></Footer>
 </Container>
 
 <style lang="scss">
@@ -73,15 +71,5 @@
 
   #infos {
     margin-top: auto;
-  }
-
-  footer {
-    margin: 0 16px;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1em;
-    line-height: 1em;
   }
 </style>
