@@ -3,23 +3,23 @@
   let box2 = 1
   let box3 = 2
 
-  setTimeout(
+  window.setTimeout(
     () =>
-      setInterval(() => {
+      window.setInterval(() => {
         box1 = (box1 + 1) % 4
       }, 3000),
     3000
   )
-  setTimeout(
+  window.setTimeout(
     () =>
-      setInterval(() => {
+      window.setInterval(() => {
         box2 = (box2 + 1) % 4
       }, 3000),
     2000
   )
-  setTimeout(
+  window.setTimeout(
     () =>
-      setInterval(() => {
+      window.setInterval(() => {
         box3 = (box3 + 1) % 4
       }, 3000),
     1000
