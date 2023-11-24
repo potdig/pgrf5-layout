@@ -4,3 +4,5 @@ dev:
 	docker compose --profile dev up -d
 prod:
 	docker compose --profile prod up -d
+stop-dev:
+	docker compose --profile dev stop
