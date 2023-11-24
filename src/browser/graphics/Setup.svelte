@@ -98,9 +98,12 @@
         </div>
       {/if}
     </div>
-    <SlideBox row={5} col={8} />
     {#each boxes as box}
-      <Box />
+      {#if Math.random() > 0.8}
+        <SlideBox />
+      {:else}
+        <Box />
+      {/if}
     {/each}
   </div>
 </Container>

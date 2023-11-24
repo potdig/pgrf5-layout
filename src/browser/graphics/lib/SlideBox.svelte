@@ -1,17 +1,12 @@
 <script lang="ts">
-  export let row: number | undefined = undefined
-  export let col: number | undefined = undefined
-
   const rotationCount = Math.floor(Math.random() * 4)
-  $: gridRowCol = row && col ? `grid-row: ${row}; grid-column: ${col}` : ''
-
   const rotation = `rotate(${90 * rotationCount}deg)`
   const scaleX = `scaleX(${Math.random() > 0.5 ? 1 : -1})`
   const transform = `transform: ${rotation} ${scaleX}`
 
   const opacity = `opacity: ${Math.random() * 0.7 + 0.3}`
 
-  $: caseStyle = [gridRowCol, opacity, transform].join('; ')
+  $: caseStyle = [opacity, transform].join('; ')
 
   let box1 = 0
   let box2 = 1
