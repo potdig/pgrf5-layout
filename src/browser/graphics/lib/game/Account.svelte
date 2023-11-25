@@ -33,7 +33,7 @@
   }
 </script>
 
-{#if acc}
+{#if acc && socialNames.length > 0}
   <div class="account">
     {#each socialNames as social}
       {#if currentSocial === social}

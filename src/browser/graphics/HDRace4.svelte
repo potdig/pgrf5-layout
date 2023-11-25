@@ -14,8 +14,8 @@
   import Video from './lib/game/Video.svelte'
   import { rome } from './lib/game/rome'
 
-  const width = `${1920 * 0.48}px`
-  const height = `${1080 * 0.48}px`
+  const width = `${1920 * 0.37}px`
+  const height = `${1080 * 0.37}px`
 
   $: est = $currentRun?.estimate ?? ''
   $: teams = $currentRun?.teams ?? []
@@ -26,8 +26,28 @@
 
 <Container>
   <Background></Background>
-  <Header></Header>
+  <Header dense={true} --marginX="64px"></Header>
   <main>
+    <div id="others">
+      <div id="info">
+        <div id="commentators">
+          {#each $commentators as commentator}
+            <InfoBox label="Commentator">
+              <TextValue value={commentator.name}></TextValue>
+              <Account account={commentator.social}></Account>
+            </InfoBox>
+          {/each}
+        </div>
+        <div id="times">
+          <InfoBox label="EST">
+            <TimeValue value={est}></TimeValue>
+          </InfoBox>
+          <InfoBox label="Current Time">
+            <TimeValue value={time} status={timerStatus}></TimeValue>
+          </InfoBox>
+        </div>
+      </div>
+    </div>
     <div id="runners">
       {#each teams as team, index}
         <div class="runner">
@@ -40,41 +60,28 @@
         </div>
       {/each}
     </div>
-    <div id="others">
-      <div id="commentators">
-        {#each $commentators as commentator}
-          <InfoBox label="Commentator">
-            <TextValue value={commentator.name}></TextValue>
-            <Account account={commentator.social}></Account>
-          </InfoBox>
-        {/each}
-      </div>
-      <div id="times">
-        <InfoBox label="EST">
-          <TimeValue value={est}></TimeValue>
-        </InfoBox>
-        <InfoBox label="Current Time">
-          <TimeValue value={time} status={timerStatus}></TimeValue>
-        </InfoBox>
-      </div>
-    </div>
   </main>
-  <Footer></Footer>
+  <Footer --marginX="64px"></Footer>
 </Container>
 
 <style lang="scss">
+  $marginX: 64px;
+
   main {
     flex-grow: 1;
-    margin: 0 16px;
+    margin: 0 $marginX;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
+    gap: 32px;
   }
 
   #runners {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    justify-content: center;
+    row-gap: 4px;
+    column-gap: 16px;
   }
 
   .runner {
@@ -83,23 +90,27 @@
   }
 
   #others {
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
-    gap: 32px;
+    display: flex;
+    flex-direction: column;
     align-items: end;
+    width: 320px;
+  }
+
+  #info {
+    width: 100%;
+    margin-top: auto;
   }
 
   #commentators {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 2%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   #times {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: 100%;
   }
 </style>

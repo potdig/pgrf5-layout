@@ -13,7 +13,7 @@
   })
 </script>
 
-<header>
+<header class:dense>
   <img
     id="logo"
     class:dense
@@ -43,6 +43,10 @@
     align-items: center;
     height: 100px;
     font-size: font.$baseFontSize;
+
+    &.dense {
+      height: 60px;
+    }
   }
 
   #logo {
