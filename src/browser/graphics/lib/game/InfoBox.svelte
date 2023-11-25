@@ -1,10 +1,8 @@
 <script lang="ts">
-  import type { AdditionSocial } from '~/types/additions/speedcontrolUserAdditionArray'
   import TextValue from './TextValue.svelte'
 
   export let label: string
   export let value: string = ''
-  export let account: AdditionSocial | undefined = undefined
   export let dense: boolean = false
 </script>
 
@@ -12,7 +10,7 @@
   <span class="label" class:dense>{label}</span>
   <div class="value-area">
     <slot>
-      <TextValue {value} {account} />
+      <TextValue {value} />
     </slot>
   </div>
 </div>
