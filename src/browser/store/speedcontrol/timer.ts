@@ -13,4 +13,4 @@ const timer: Readable<Timer> = readable<Timer>(undefined, set => {
 const splitOf = (teamId: string) =>
   derived(timer, $timer => $timer?.teamFinishTimes[teamId]?.time)
 
-export { timer, splitOf }
+export { splitOf, timer }

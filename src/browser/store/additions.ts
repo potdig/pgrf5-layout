@@ -1,7 +1,7 @@
 import { derived, readable, type Readable } from 'svelte/store'
-import type { AdditionsNodeCG } from '../additions'
 import type { Commentator } from '~/types/additions/commentatorArray'
 import type { SpeedcontrolUserAddition } from '~/types/additions/speedcontrolUserAdditionArray'
+import type { AdditionsNodeCG } from '../additions'
 
 const speedcontrolUserAdditions = window.nodecg as AdditionsNodeCG
 
@@ -31,4 +31,4 @@ const additions: Readable<SpeedcontrolUserAddition[]> = readable([], set => {
     })
 })
 
-export { commentatorsOf, additions }
+export { additions, commentatorsOf }

@@ -1,8 +1,8 @@
 import { derived, readable, type Readable } from 'svelte/store'
-import type { RunData } from '~/types/speedcontrol/run-data'
 import type { SpeedControlNodeCG } from '~/browser/speedcontrol'
-import type { ActiveRunData } from '~/types/speedcontrol/replicant'
 import type { FullSocial } from '~/types/player-with-social'
+import type { ActiveRunData } from '~/types/speedcontrol/replicant'
+import type { RunData } from '~/types/speedcontrol/run-data'
 import { additions } from '../additions'
 
 const speedcontrol = window.nodecg as SpeedControlNodeCG

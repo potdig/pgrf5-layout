@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { fly, type FlyParams } from 'svelte/transition'
   import { sineInOut } from 'svelte/easing'
-  import type { FullSocial, SocialName } from '~/types/player-with-social'
+  import { fly, type FlyParams } from 'svelte/transition'
   import { socialOf } from '~/browser/store/speedcontrol/run'
+  import type { FullSocial, SocialName } from '~/types/player-with-social'
 
   export let userId: string = ''
   export let account: FullSocial | undefined = undefined

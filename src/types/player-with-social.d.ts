@@ -11,4 +11,4 @@ type FullSocial = {
 
 type SocialName = 'twitch' | 'nico' | 'youtube' | 'twitter'
 
-export { PlayerWithSocial, FullSocial, SocialName }
+export { FullSocial, PlayerWithSocial, SocialName }

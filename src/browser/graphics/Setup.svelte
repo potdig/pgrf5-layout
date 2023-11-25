@@ -1,12 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { RunData } from '~/types/speedcontrol/run-data'
+  import { commentatorsOf } from '../store/additions'
   import { runsOnSetup } from '../store/speedcontrol/run'
+  import Box from './lib/Box.svelte'
   import Container from './lib/Container.svelte'
   import SlideBox from './lib/SlideBox.svelte'
   import TextFitSnugly from './lib/setup/TextFitSnugly.svelte'
-  import { commentatorsOf } from '../store/additions'
-  import Box from './lib/Box.svelte'
 
   // 9*7
   const boxes = [...Array(63)].map((_, i) => i)

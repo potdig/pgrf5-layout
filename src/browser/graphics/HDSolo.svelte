@@ -1,6 +1,6 @@
 <script lang="ts">
   import { commentatorsOf } from '../store/additions'
-  import { currentRun, socialOf } from '../store/speedcontrol/run'
+  import { currentRun } from '../store/speedcontrol/run'
   import { timer } from '../store/speedcontrol/timer'
   import Container from './lib/Container.svelte'
   import Account from './lib/game/Account.svelte'

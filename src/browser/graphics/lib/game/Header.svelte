@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { currentRun } from '~/browser/store/speedcontrol/run'
   import TextFitSnugly from '../setup/TextFitSnugly.svelte'
-  import { onMount } from 'svelte'
 
   export let dense: boolean = false
 
