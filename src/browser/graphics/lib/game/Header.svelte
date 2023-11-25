@@ -36,7 +36,7 @@
   @use '~/browser/graphics/stylesheets/font-size.scss' as font;
 
   header {
-    margin: 0 16px;
+    margin-inline: var(--marginX, 16px);
     padding: 8px 24px;
     display: flex;
     flex-direction: row;

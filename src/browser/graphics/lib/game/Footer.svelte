@@ -15,7 +15,7 @@
   @use '~/browser/graphics/stylesheets/font-size.scss' as font;
 
   footer {
-    margin: 0 16px;
+    margin-inline: var(--marginX, 16px);
     height: 1.6em;
     display: flex;
     align-items: center;

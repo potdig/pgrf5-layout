@@ -1,6 +1,6 @@
+import { svelte } from '@sveltejs/vite-plugin-svelte'
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config/
@@ -23,6 +23,7 @@ export default defineConfig({
       input: {
         'graphics/setup': resolve(__dirname, 'graphics/setup.html'),
         'graphics/hd-solo': resolve(__dirname, 'graphics/hd-solo.html'),
+        'graphics/sd-solo': resolve(__dirname, 'graphics/sd-solo.html'),
         'graphics/hd-race2': resolve(__dirname, 'graphics/hd-race2.html'),
       },
     },
