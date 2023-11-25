@@ -23,6 +23,7 @@ export default defineConfig({
       input: {
         'graphics/setup': resolve(__dirname, 'graphics/setup.html'),
         'graphics/hd-solo': resolve(__dirname, 'graphics/hd-solo.html'),
+        'graphics/hd-race2': resolve(__dirname, 'graphics/hd-race2.html'),
       },
     },
   },

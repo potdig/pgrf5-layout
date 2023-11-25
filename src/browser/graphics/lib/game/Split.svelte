@@ -2,12 +2,14 @@
   import { splitOf } from '~/browser/store/speedcontrol/timer'
 
   export let id: string
-  export let small: boolean
+  export let small: boolean = false
 
   $: split = splitOf(id)
 </script>
 
-<p class="split time" class:small>{{ $split }}</p>
+{#if $split}
+  <p class="split" class:small>{$split}</p>
+{/if}
 
 <style lang="scss" scoped>
   $height: 1em;
@@ -16,6 +18,8 @@
     height: $height;
     line-height: $height;
     color: rgb(0, 65, 255);
+    font-family: 'Nova Mono', sans-serif;
+    font-weight: bold;
     font-size: 1.4em;
     margin-top: 4px;
     text-align: right;
