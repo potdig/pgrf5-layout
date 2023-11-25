@@ -30,14 +30,16 @@
   <main>
     <div id="runners">
       {#each teams as team, index}
-        <div class="runner">
-          <Video {width} {height}></Video>
-          <InfoBox dense={true} label={rome(index + 1)}>
-            <TextValue value={team?.players[0].name}></TextValue>
-            <Account userId={team?.players[0].id}></Account>
-          </InfoBox>
-          <Split id={team?.id}></Split>
-        </div>
+        {#if index < 2}
+          <div class="runner">
+            <Video {width} {height}></Video>
+            <InfoBox dense={true} label={rome(index + 1)}>
+              <TextValue value={team?.players[0].name}></TextValue>
+              <Account userId={team?.players[0].id}></Account>
+            </InfoBox>
+            <Split id={team?.id}></Split>
+          </div>
+        {/if}
       {/each}
     </div>
     <div id="others">
