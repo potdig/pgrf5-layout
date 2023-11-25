@@ -58,6 +58,7 @@
 
   .account {
     display: flex;
+    width: 100%;
     justify-content: flex-end;
     font-size: 0.8em;
     height: $accountHeight;

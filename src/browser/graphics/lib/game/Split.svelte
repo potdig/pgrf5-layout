@@ -7,9 +7,11 @@
   $: split = splitOf(id)
 </script>
 
-{#if $split}
-  <p class="split" class:small>{$split}</p>
-{/if}
+<p class="split" class:small>
+  {#if $split}
+    {$split}
+  {/if}
+</p>
 
 <style lang="scss" scoped>
   $height: 1em;

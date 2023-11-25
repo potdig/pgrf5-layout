@@ -52,8 +52,8 @@
       {#each teams as team, index}
         <div class="runner">
           <Video {width} {height}></Video>
-          <InfoBox dense={true} label={rome(index + 1)}>
-            <TextValue value={team?.players[0].name}></TextValue>
+          <InfoBox label={rome(index + 1)} oneLine={true}>
+            <TextValue value={team?.players[0].name} oneLine={true}></TextValue>
             <Account userId={team?.players[0].id}></Account>
           </InfoBox>
           <Split id={team?.id}></Split>

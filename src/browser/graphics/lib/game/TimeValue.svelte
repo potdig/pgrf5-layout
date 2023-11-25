@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { TeamResult, TimerState } from '~/types/speedcontrol/timer'
+  import { omitZeroHour } from './time-format'
 
   export let value: string
   export let status: TimerState | TeamResult | '' = ''
@@ -31,7 +32,7 @@
   }
 </script>
 
-<span class="value time {statusClass}">{value}</span>
+<span class="value time {statusClass}">{omitZeroHour(value)}</span>
 
 <style lang="scss" scoped>
   .time {

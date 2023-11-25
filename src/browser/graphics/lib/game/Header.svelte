@@ -52,10 +52,6 @@
   #logo {
     height: 100%;
     margin-right: calc(1080px * 0.02);
-
-    &.dense {
-      height: 60%;
-    }
   }
 
   #title {

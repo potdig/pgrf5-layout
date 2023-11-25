@@ -4,13 +4,14 @@
   export let label: string
   export let value: string = ''
   export let dense: boolean = false
+  export let oneLine: boolean = false
 </script>
 
-<div class="info-box">
+<div class="info-box {oneLine ? 'one-line' : ''}">
   <span class="label" class:dense>{label}</span>
-  <div class="value-area">
+  <div class="value-area {oneLine ? 'one-line' : ''}">
     <slot>
-      <TextValue {value} />
+      <TextValue {value} {oneLine} />
     </slot>
   </div>
 </div>
@@ -27,6 +28,13 @@
     padding-bottom: 2px;
     margin-top: 8px;
     font-size: font.$baseFontSize;
+
+    &.one-line {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5em;
+      align-items: center;
+    }
   }
 
   .label {
@@ -42,5 +50,12 @@
   .value-area {
     width: 100%;
     text-align: right;
+
+    &.one-line {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5em;
+      align-items: center;
+    }
   }
 </style>

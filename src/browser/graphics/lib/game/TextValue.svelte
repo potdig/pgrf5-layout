@@ -3,10 +3,8 @@
   export let value: string = ''
 </script>
 
-<div>
-  <div class={oneLine ? 'one-line' : ''}>
-    <p class="value">{value}</p>
-  </div>
+<div class={oneLine ? 'one-line' : ''}>
+  <p class="value">{value}</p>
 </div>
 
 <style lang="scss">
@@ -15,6 +13,7 @@
     text-align: right;
 
     &.one-line {
+      width: auto;
       display: grid;
       grid-template-columns: minmax(max-content, max-content) 1fr;
       align-items: center;
