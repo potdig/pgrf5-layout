@@ -27,6 +27,7 @@ export default defineConfig({
         'graphics/hd-race2': resolve(__dirname, 'graphics/hd-race2.html'),
         'graphics/sd-race2': resolve(__dirname, 'graphics/sd-race2.html'),
         'graphics/hd-race4': resolve(__dirname, 'graphics/hd-race4.html'),
+        'graphics/sd-race4': resolve(__dirname, 'graphics/sd-race4.html'),
       },
     },
   },
