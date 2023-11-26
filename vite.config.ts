@@ -24,6 +24,7 @@ export default defineConfig({
         'graphics/setup': resolve(__dirname, 'graphics/setup.html'),
         'graphics/hd-solo': resolve(__dirname, 'graphics/hd-solo.html'),
         'graphics/sd-solo': resolve(__dirname, 'graphics/sd-solo.html'),
+        'graphics/gb-solo': resolve(__dirname, 'graphics/gb-solo.html'),
         'graphics/hd-race2': resolve(__dirname, 'graphics/hd-race2.html'),
         'graphics/sd-race2': resolve(__dirname, 'graphics/sd-race2.html'),
         'graphics/hd-race4': resolve(__dirname, 'graphics/hd-race4.html'),
