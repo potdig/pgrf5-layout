@@ -23,6 +23,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         'graphics/setup': resolve(__dirname, `${inputDir}/setup.html`),
+        'graphics/thanks': resolve(__dirname, `${inputDir}/thanks.html`),
         'graphics/hd-solo': resolve(__dirname, `${inputDir}/hd-solo.html`),
         'graphics/sd-solo': resolve(__dirname, `${inputDir}/sd-solo.html`),
         'graphics/gb-solo': resolve(__dirname, `${inputDir}/gb-solo.html`),
