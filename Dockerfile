@@ -38,15 +38,6 @@ CMD ["node", "index.js"]
 
 # Build bundle
 FROM base AS bundle
-WORKDIR /build
-COPY . ./
-RUN apk add --no-cache python3 alpine-sdk &&\
-    npm install &&\
-    npm run build &&\
-    npm run build:extension
-WORKDIR /app
-RUN mkdir -p ./nodecg/bundles/${LAYOUTS_NAME}/ &&\
-    mkdir -p ./nodecg/assets/${LAYOUTS_NAME}/materials/ &&\
-    cp -rp /build/dist/* ./nodecg/bundles/${LAYOUTS_NAME}/ &&\
-    cp -rp /build/public/* ./nodecg/assets/${LAYOUTS_NAME}/materials/
-WORKDIR /app/nodecg
+RUN apk --no-cache add git &&\
+    npm install -g nodecg-cli &&\
+    nodecg install potdig/pgrf4-layout
