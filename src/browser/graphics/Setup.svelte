@@ -70,34 +70,43 @@
       {/if}
     </div>
     <div id="coming-soon-label" class="box">
-      <p>Coming</p>
-      <p>soon</p>
+      {#if runComingSoon1}
+        <p>Coming</p>
+        <p>soon</p>
+      {/if}
     </div>
-    <div id="coming-soon" bind:this={divComingSoon}>
-      <div>
-        <p class="title">
-          <TextFitSnugly maxWidth={maxWidthComingSoon}>
-            {runComingSoon1?.game}
-          </TextFitSnugly>
-        </p>
-        {#if runComingSoon1?.category}
-          <p class="category">{runComingSoon1?.category}</p>
-        {/if}
-      </div>
-      <div class="divider" />
-      {#if runComingSoon2}
+    {#if runComingSoon1}
+      <div id="coming-soon" bind:this={divComingSoon}>
         <div>
           <p class="title">
             <TextFitSnugly maxWidth={maxWidthComingSoon}>
-              {runComingSoon2?.game}
+              {runComingSoon1?.game}
             </TextFitSnugly>
           </p>
-          {#if runComingSoon2?.category}
-            <p class="category">{runComingSoon2?.category}</p>
+          {#if runComingSoon1?.category}
+            <p class="category">{runComingSoon1?.category}</p>
           {/if}
         </div>
-      {/if}
-    </div>
+        <div class="divider" />
+        {#if runComingSoon2}
+          <div>
+            <p class="title">
+              <TextFitSnugly maxWidth={maxWidthComingSoon}>
+                {runComingSoon2?.game}
+              </TextFitSnugly>
+            </p>
+            {#if runComingSoon2?.category}
+              <p class="category">{runComingSoon2?.category}</p>
+            {/if}
+          </div>
+        {/if}
+      </div>
+    {:else}
+      <Box />
+      <Box />
+      <Box />
+      <Box />
+    {/if}
     {#each boxes as box}
       {#if Math.random() > 0.8}
         <SlideBox />
