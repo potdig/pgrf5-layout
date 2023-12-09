@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts">
   import { commentatorsOf } from '../store/additions'
   import { currentRun } from '../store/speedcontrol/run'
   import { timer } from '../store/speedcontrol/timer'
