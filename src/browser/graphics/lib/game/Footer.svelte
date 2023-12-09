@@ -1,12 +1,15 @@
 <script lang="ts">
   import { nextRun } from '~/browser/store/speedcontrol/run'
+  $: game = $nextRun?.game
+  $: category = $nextRun?.category
+  $: displayedRun = category ? `${game} | ${category}` : game
 </script>
 
 <footer>
   {#if $nextRun}
     <p id="next-title">
       <span class="label">Next Title: </span>
-      {$nextRun?.game} | {$nextRun?.category}
+      {displayedRun}
     </p>
   {/if}
 </footer>
