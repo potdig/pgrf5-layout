@@ -6,6 +6,7 @@
   import Box from './lib/Box.svelte'
   import Container from './lib/Container.svelte'
   import SlideBox from './lib/SlideBox.svelte'
+  import Clock from './lib/setup/Clock.svelte'
   import TextFitSnugly from './lib/setup/TextFitSnugly.svelte'
 
   // 9*7
@@ -107,6 +108,9 @@
       <Box />
       <Box />
     {/if}
+    <div id="clock" class="box">
+      <Clock />
+    </div>
     {#each boxes as box}
       {#if Math.random() > 0.8}
         <SlideBox />
@@ -181,6 +185,17 @@
   #pgrf4 {
     grid-row: 2;
     grid-column: 4;
+  }
+
+  #clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: 2;
+    grid-column: 9;
+    color: white;
+    font-family: 'Nova Mono', sans-serif;
+    font-size: 3.6em;
   }
 
   .row {
