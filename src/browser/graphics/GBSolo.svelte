@@ -19,7 +19,7 @@
   $: est = $currentRun?.estimate ?? ''
   $: time = $timer?.time
   $: timerStatus = $timer?.state
-  $: runners = $currentRun?.teams[0].players
+  $: runners = $currentRun?.teams[0]?.players
   $: commentators = commentatorsOf($currentRun?.externalID ?? '')
 </script>
 
