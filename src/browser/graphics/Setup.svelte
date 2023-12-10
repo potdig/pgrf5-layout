@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
   import type { RunData } from '~/types/speedcontrol/run-data'
   import { commentatorsOf } from '../store/additions'
   import { runsOnSetup } from '../store/speedcontrol/run'
@@ -30,10 +29,10 @@
   let maxWidthUpNext: number
   let maxWidthComingSoon: number
 
-  onMount(async () => {
-    maxWidthUpNext = divUpNext.getBoundingClientRect().width
-    maxWidthComingSoon = divComingSoon.getBoundingClientRect().width
-  })
+  $: {
+    maxWidthUpNext = divUpNext?.getBoundingClientRect().width
+    maxWidthComingSoon = divComingSoon?.getBoundingClientRect().width
+  }
 </script>
 
 <Container>

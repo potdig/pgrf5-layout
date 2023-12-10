@@ -1,7 +1,7 @@
 <script lang="ts">
   import { beforeUpdate, tick } from 'svelte'
 
-  export let maxWidth: number
+  export let maxWidth: number = Number.MAX_SAFE_INTEGER
 
   let text: HTMLElement
 
