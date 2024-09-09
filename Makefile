@@ -10,3 +10,10 @@ stop-dev:
 	docker compose --profile dev stop
 stop-prod:
 	docker compose --profile prod stop
+reboot:
+	docker compose --profile dev stop && \
+	npm run build && \
+	mv dist/src/browser/graphics/input dist/graphics && \
+	rm -r dist/src
+	npm run build:extension && \
+	docker compose --profile dev up -d
