@@ -15,11 +15,11 @@
     <div id="message-2" class="message">
       <p>See you again on next PGRF !</p>
     </div>
-    <img id="ome" src="/assets/pgrf4-layout/materials/ome.png" alt="OME" />
+    <img id="ome" src="/assets/pgrf5-layout/materials/ome.png" alt="OME" />
     <img
-      id="pgrf4"
-      src="/assets/pgrf4-layout/materials/pgrf4.png"
-      alt="PGRF4"
+      id="pgrf5"
+      src="/assets/pgrf5-layout/materials/pgrf5.png"
+      alt="pgrf5"
     />
     {#each boxes as box}
       {#if Math.random() > 0.8}
@@ -78,7 +78,7 @@
     grid-column: 7;
   }
 
-  #pgrf4 {
+  #pgrf5 {
     grid-row: 5;
     grid-column: 8;
   }

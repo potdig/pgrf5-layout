@@ -1,7 +1,7 @@
 build-dev:
-	docker compose --profile dev build --build-arg LAYOUTS_NAME=pgrf4-layout
+	docker compose --profile dev build --build-arg LAYOUTS_NAME=pgrf5-layout
 build-prod:
-	docker compose --profile prod build --build-arg LAYOUTS_NAME=pgrf4-layout
+	docker compose --profile prod build --build-arg LAYOUTS_NAME=pgrf5-layout
 dev:
 	docker compose --profile dev up -d
 prod:

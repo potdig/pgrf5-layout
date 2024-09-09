@@ -17,7 +17,7 @@ export default defineConfig({
       ],
     }),
   ],
-  base: '/bundles/pgrf4-layout/',
+  base: '/bundles/pgrf5-layout/',
   build: {
     emptyOutDir: true,
     rollupOptions: {

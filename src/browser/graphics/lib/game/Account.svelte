@@ -43,7 +43,7 @@
           out:fly={{ y: '100%', ...flyOption }}
         >
           <img
-            src="/assets/pgrf4-layout/materials/{social}.svg"
+            src="/assets/pgrf5-layout/materials/{social}.svg"
             alt="logo for {social}"
           />
           <p>{acc[social]}</p>

@@ -37,12 +37,12 @@
 
 <Container>
   <div id="grid">
-    <img id="ome" src="/assets/pgrf4-layout/materials/ome.png" alt="OME" />
+    <img id="ome" src="/assets/pgrf5-layout/materials/ome.png" alt="OME" />
     <p id="presents">presents</p>
     <img
-      id="pgrf4"
-      src="/assets/pgrf4-layout/materials/pgrf4.png"
-      alt="PGRF4"
+      id="pgrf5"
+      src="/assets/pgrf5-layout/materials/pgrf5.png"
+      alt="pgrf5"
     />
     <div id="up-next-label" class="box">
       <p>Up</p>
@@ -181,7 +181,7 @@
     font-size: 3.3em;
   }
 
-  #pgrf4 {
+  #pgrf5 {
     grid-row: 2;
     grid-column: 4;
   }

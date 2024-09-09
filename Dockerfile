@@ -40,4 +40,4 @@ CMD ["node", "index.js"]
 FROM base AS bundle
 RUN apk --no-cache add git &&\
     npm install -g nodecg-cli &&\
-    nodecg install potdig/pgrf4-layout
+    nodecg install potdig/pgrf5-layout

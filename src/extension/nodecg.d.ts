@@ -4,7 +4,7 @@ import type { MessageMap } from '~/types/message'
 import type { ReplicantMap } from '~/types/replicant'
 
 export type NodeCG = CreateNodecgInstance<
-  'pgrf4-layout',
+  'pgrf5-layout',
   BundleConfig,
   ReplicantMap,
   MessageMap

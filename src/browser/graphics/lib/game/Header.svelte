@@ -17,8 +17,8 @@
   <img
     id="logo"
     class:dense
-    src="/assets/pgrf4-layout/materials/pgrf4.png"
-    alt="pgrf4"
+    src="/assets/pgrf5-layout/materials/pgrf5.png"
+    alt="pgrf5"
   />
   <div id="title" class:dense bind:this={title}>
     <p id="game-title" class:dense>
