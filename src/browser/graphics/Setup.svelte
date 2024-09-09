@@ -2,14 +2,10 @@
   import type { RunData } from '~/types/speedcontrol/run-data'
   import { commentatorsOf } from '../store/additions'
   import { runsOnSetup } from '../store/speedcontrol/run'
-  import Box from './lib/Box.svelte'
   import Container from './lib/Container.svelte'
-  import SlideBox from './lib/SlideBox.svelte'
+  import Background from './lib/setup/Background.svelte'
   import Clock from './lib/setup/Clock.svelte'
   import TextFitSnugly from './lib/setup/TextFitSnugly.svelte'
-
-  // 9*7
-  const boxes = [...Array(63)].map((_, i) => i)
 
   let divUpNext: HTMLElement
   let divComingSoon: HTMLElement
@@ -36,17 +32,22 @@
 </script>
 
 <Container>
-  <div id="grid">
-    <img id="ome" src="/assets/pgrf5-layout/materials/ome.png" alt="OME" />
-    <p id="presents">presents</p>
-    <img
-      id="pgrf5"
-      src="/assets/pgrf5-layout/materials/pgrf5.png"
-      alt="pgrf5"
-    />
-    <div id="up-next-label" class="box">
-      <p>Up</p>
-      <p>next</p>
+  <Background />
+  <header>
+    <div id="title">
+      <img id="ome" src="/assets/pgrf5-layout/materials/ome.png" alt="OME" />
+      <p id="presents">presents</p>
+      <img
+        id="pgrf5"
+        src="/assets/pgrf5-layout/materials/pgrf5.png"
+        alt="pgrf5"
+      />
+    </div>
+    <Clock />
+  </header>
+  <main>
+    <div id="up-next-label">
+      <p>Up next</p>
     </div>
     <div id="up-next" bind:this={divUpNext}>
       <p class="title">
@@ -69,7 +70,7 @@
         </div>
       {/if}
     </div>
-    <div id="coming-soon-label" class="box">
+    <div id="coming-soon-label">
       {#if runComingSoon1}
         <p>Coming</p>
         <p>soon</p>
@@ -101,43 +102,24 @@
           </div>
         {/if}
       </div>
-    {:else}
-      <Box />
-      <Box />
-      <Box />
-      <Box />
     {/if}
-    <div id="clock" class="box">
-      <Clock />
-    </div>
-    {#each boxes as box}
-      {#if Math.random() > 0.8}
-        <SlideBox />
-      {:else}
-        <Box />
-      {/if}
-    {/each}
-  </div>
+  </main>
 </Container>
 
 <style lang="scss">
-  @use './stylesheets/box';
-
   $columnSize: 9;
   $boxSize: 220px;
   $boxMargin: 10px;
 
-  #grid {
-    display: grid;
-    position: relative;
-    top: -200px;
-    left: -200px;
-    width: calc($boxSize * $columnSize);
-    height: calc($boxSize * $columnSize);
-    grid-template-rows: repeat($columnSize, $boxSize);
-    grid-template-columns: repeat($columnSize, $boxSize);
-    align-items: center;
-    gap: $boxMargin * 2;
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    #title {
+      display: flex;
+      align-items: center;
+    }
   }
 
   #up-next-label,
@@ -154,47 +136,20 @@
 
   #up-next-label {
     font-size: 4.8em;
-    grid-row: 3;
-    grid-column: 2;
   }
 
   #coming-soon-label {
     font-size: 3.6em;
-    grid-row: 4;
-    grid-column: 3;
   }
 
   img {
     width: $boxSize;
   }
 
-  #ome {
-    grid-row: 2;
-    grid-column: 2;
-  }
-
   #presents {
-    grid-row: 2;
-    grid-column: 3;
     text-align: center;
     font-family: 'Staatliches';
     font-size: 3.3em;
-  }
-
-  #pgrf5 {
-    grid-row: 2;
-    grid-column: 4;
-  }
-
-  #clock {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-row: 2;
-    grid-column: 9;
-    color: white;
-    font-family: 'Nova Mono', sans-serif;
-    font-size: 3.6em;
   }
 
   .row {
@@ -207,8 +162,6 @@
   }
 
   #up-next {
-    grid-row: 3;
-    grid-column: 3 / 8;
     margin-inline: 50px;
     font-size: 1.8em;
 
@@ -224,8 +177,6 @@
   }
 
   #coming-soon {
-    grid-row: 4;
-    grid-column: 4 / 8;
     margin-inline: 30px;
     font-size: 1.4em;
     display: grid;

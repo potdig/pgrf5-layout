@@ -16,3 +16,16 @@
 <p>
   {`${hour}${colon}${formattedMin}`}
 </p>
+
+<style>
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: 2;
+    grid-column: 9;
+    color: black;
+    font-family: 'Nova Mono', sans-serif;
+    font-size: 3.6em;
+  }
+</style>
