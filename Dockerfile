@@ -2,7 +2,7 @@
 FROM node:18-alpine AS nodecg
 WORKDIR /app
 RUN apk --no-cache add git &&\
-    git clone https://github.com/nodecg/nodecg.git &&\
+    git clone --depth 1 --branch v2.1.11 https://github.com/nodecg/nodecg.git &&\
     cd nodecg &&\
     npm install &&\
     npm run build

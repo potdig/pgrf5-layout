@@ -1,28 +1,6 @@
 {
   "name": "pgrf5-layout",
-  "private": true,
   "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "build:extension": "rollup -c rollup.config.extension.js",
-    "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
-  },
-  "devDependencies": {
-    "@rollup/plugin-typescript": "^11.1.6",
-    "@sveltejs/vite-plugin-svelte": "^3.1.2",
-    "@tsconfig/svelte": "^5.0.4",
-    "sass-embedded": "^1.78.0",
-    "svelte": "^4.2.19",
-    "svelte-check": "^4.0.1",
-    "ts-nodecg": "^0.3.1",
-    "tslib": "^2.7.0",
-    "typescript": "^5.5.4",
-    "vite": "^5.4.3",
-    "vite-plugin-static-copy": "^1.0.6"
-  },
   "nodecg": {
     "compatibleRange": "^2.0.0",
     "graphics": [
@@ -76,13 +54,7 @@
       {
         "name": "materials",
         "title": "Materials",
-        "allowedTypes": [
-          "jpg",
-          "jpeg",
-          "gif",
-          "png",
-          "svg"
-        ]
+        "allowedTypes": ["jpg", "jpeg", "gif", "png", "svg"]
       }
     ],
     "mount": [

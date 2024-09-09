@@ -11,8 +11,9 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: 'package.json',
+          src: 'package-nodecg.json',
           dest: '.',
+          rename: 'package.json',
         },
       ],
     }),
