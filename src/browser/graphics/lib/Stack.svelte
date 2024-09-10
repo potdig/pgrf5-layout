@@ -2,6 +2,7 @@
   import { slide } from 'svelte/transition'
 
   export let size = 10
+  export let stop = false
 
   const brickHeight = 70
   $: stackHeight = brickHeight * (size + 1)
@@ -12,12 +13,14 @@
 
   const interval = Math.floor(Math.random() * 3000) + 1000
 
-  setInterval(() => {
-    bricks = [...bricks, Math.max(...bricks) + 1]
-    setTimeout(() => {
-      bricks = [...bricks.slice(1)]
-    }, 500)
-  }, interval)
+  if (!stop) {
+    setInterval(() => {
+      bricks = [...bricks, Math.max(...bricks) + 1]
+      setTimeout(() => {
+        bricks = [...bricks.slice(1)]
+      }, 500)
+    }, interval)
+  }
 </script>
 
 <div class="stack">

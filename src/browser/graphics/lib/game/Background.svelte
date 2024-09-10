@@ -1,39 +1,35 @@
-<script lang="ts">
-  import Box from '../Box.svelte'
-  import SlideBox from '../SlideBox.svelte'
+<script>
+  import Stack from '../Stack.svelte'
 
-  // 9*7
-  const boxes = [...Array(63)].map((_, i) => i)
+  const stackSizes = [...Array(12)].map(() => Math.ceil(Math.random() * 10) + 5)
 </script>
 
-<div id="grid">
-  {#each boxes as box}
-    {#if Math.random() < 0.8}
-      <Box />
-    {:else}
-      <SlideBox animate={false} />
-    {/if}
-  {/each}
+<div id="bg">
+  <div>
+    {#each stackSizes as size}
+      <Stack {size} stop />
+    {/each}
+  </div>
 </div>
 
 <style lang="scss">
-  $columnSize: 9;
-  $boxSize: 220px;
-  $boxMargin: 10px;
-
-  #grid {
-    display: grid;
+  #bg {
     position: absolute;
+    width: 100vw;
+    height: 100vh;
+    perspective: 1600px;
     z-index: -1;
-    top: -200px;
-    left: -200px;
-    width: calc($boxSize * $columnSize);
-    height: calc($boxSize * $columnSize);
-    grid-template-rows: repeat($columnSize, $boxSize);
-    grid-template-columns: repeat($columnSize, $boxSize);
-    align-items: center;
-    gap: $boxMargin * 2;
-    opacity: 0.5;
-    filter: blur(10px);
+
+    & > div {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      bottom: -80px;
+      left: -80px;
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      transform: rotate3d(1, 0, 0, 30deg);
+    }
   }
 </style>
