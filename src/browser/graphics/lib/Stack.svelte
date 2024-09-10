@@ -49,7 +49,7 @@
   }
 
   .brick {
-    background-color: gray;
+    background-color: darkgray;
     width: 180px;
     height: 60px;
     border-radius: 12px;

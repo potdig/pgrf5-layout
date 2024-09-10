@@ -88,7 +88,7 @@
           {/if}
         </div>
         {#if runComingSoon2}
-          <div>
+          <div style="margin-top: 1rem;">
             <p class="title">
               <TextFitSnugly maxWidth={maxWidthComingSoon}>
                 {runComingSoon2?.game}
@@ -172,8 +172,8 @@
   #coming-soon {
     margin-inline: 30px;
     font-size: 1.4em;
-    display: grid;
-    grid-template-rows: 1fr max-content 1fr;
+    display: flex;
+    flex-direction: column;
 
     .title {
       font-size: 1.6em;

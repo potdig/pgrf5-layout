@@ -19,6 +19,7 @@
     height: 100vh;
     perspective: 1600px;
     z-index: -1;
+    background-color: white;
 
     & > div {
       position: relative;
@@ -30,6 +31,7 @@
       align-items: end;
       gap: 10px;
       transform: rotate3d(1, 0, 0, 30deg);
+      filter: blur(8px);
     }
   }
 </style>
