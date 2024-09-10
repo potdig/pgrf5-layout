@@ -17,7 +17,7 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    perspective: 1000px;
+    perspective: 1600px;
     z-index: -1;
 
     & > div {
