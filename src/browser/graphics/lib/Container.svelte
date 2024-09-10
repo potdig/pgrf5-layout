@@ -1,4 +1,8 @@
-<div id="container">
+<script>
+  export let justifyBetween = true
+</script>
+
+<div id="container" class:justify-between={justifyBetween}>
   <slot />
 </div>
 
@@ -11,5 +15,9 @@
     flex-direction: column;
     box-sizing: border-box;
     position: relative;
+  }
+
+  .justify-between {
+    justify-content: space-between;
   }
 </style>

@@ -31,7 +31,7 @@
   }
 </script>
 
-<Container>
+<Container justifyBetween={false}>
   <Background />
   <header>
     <div id="title">
