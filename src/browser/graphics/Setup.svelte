@@ -46,10 +46,10 @@
     <Clock />
   </header>
   <main>
-    <div id="up-next-label">
-      <p>Up next</p>
-    </div>
     <div id="up-next" bind:this={divUpNext}>
+      <div id="up-next-label">
+        <p>Up next</p>
+      </div>
       <p class="title">
         <TextFitSnugly maxWidth={maxWidthUpNext}>
           {runUpNext?.game}
@@ -70,14 +70,13 @@
         </div>
       {/if}
     </div>
-    <div id="coming-soon-label">
-      {#if runComingSoon1}
-        <p>Coming</p>
-        <p>soon</p>
-      {/if}
-    </div>
     {#if runComingSoon1}
       <div id="coming-soon" bind:this={divComingSoon}>
+        <div id="coming-soon-label">
+          {#if runComingSoon1}
+            <p>Coming soon</p>
+          {/if}
+        </div>
         <div>
           <p class="title">
             <TextFitSnugly maxWidth={maxWidthComingSoon}>
@@ -88,7 +87,6 @@
             <p class="category">{runComingSoon1?.category}</p>
           {/if}
         </div>
-        <div class="divider" />
         {#if runComingSoon2}
           <div>
             <p class="title">
@@ -107,14 +105,14 @@
 </Container>
 
 <style lang="scss">
-  $columnSize: 9;
-  $boxSize: 220px;
-  $boxMargin: 10px;
+  $paddingBlock: 12px;
+  $paddingInline: 32px;
 
   header {
-    width: 100%;
+    width: calc(100% - $paddingInline * 2);
     display: flex;
     justify-content: space-between;
+    padding: $paddingBlock $paddingInline;
 
     #title {
       display: flex;
@@ -122,28 +120,23 @@
     }
   }
 
-  #up-next-label,
-  #coming-soon-label {
+  main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    color: white;
-    background-color: #555555;
+    gap: 2rem;
+  }
+
+  #up-next-label,
+  #coming-soon-label {
     font-family: 'Staatliches';
     line-height: 1em;
-  }
-
-  #up-next-label {
-    font-size: 4.8em;
-  }
-
-  #coming-soon-label {
-    font-size: 3.6em;
+    text-align: center;
+    font-size: 3em;
   }
 
   img {
-    width: $boxSize;
+    height: 160px;
   }
 
   #presents {
@@ -187,11 +180,5 @@
       font-weight: bold;
       line-height: 1.2em;
     }
-  }
-
-  .divider {
-    width: 100%;
-    margin-block: 8px;
-    border-bottom: 1px solid gray;
   }
 </style>
