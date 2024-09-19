@@ -17,3 +17,14 @@ reboot:
 	rm -r dist/src
 	npm run build:extension && \
 	docker compose --profile dev up -d
+build:
+	npm run build && \
+	mv dist/src/browser/graphics/input dist/graphics && \
+	rm -r dist/src && \
+	npm run build:extension
+build-prod:
+	npm run build && \
+	mv dist/src/browser/graphics/input dist/graphics && \
+	rm -r dist/src && \
+	npm run build:extension && \
+	mv dist/assets dist/graphics .
