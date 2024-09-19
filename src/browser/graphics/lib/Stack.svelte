@@ -8,44 +8,37 @@
   $: stackHeight = brickHeight * (size + 1)
   $: gradientRate = (1 / (size + 1)) * 100
 
-  console.log(size)
   let bricks = [...Array(size)].map((_, i) => i)
 
   const interval = Math.floor(Math.random() * 3000) + 1000
 
   if (!stop) {
     setInterval(() => {
-      bricks = [...bricks, Math.max(...bricks) + 1]
+      bricks = [Math.max(...bricks) + 1, ...bricks]
       setTimeout(() => {
-        bricks = [...bricks.slice(1)]
+        bricks = [...bricks.slice(0, size + 1)]
       }, 500)
     }, interval)
   }
 </script>
 
 <div class="stack">
-  <div
-    class="filter"
-    style="height: {stackHeight}px; background: linear-gradient(white {gradientRate}%, rgba(0, 0, 0, 0))"
-  ></div>
-  {#each bricks as brick}
-    <div class="brick" in:slide={{ duration: 500 }}></div>
+  {#each bricks as brick, index (brick)}
+    <div
+      class="brick"
+      style="opacity: {(size + 1 - index) / (size + 1)};"
+      in:slide={{ duration: 500 }}
+    ></div>
   {/each}
 </div>
 
 <style lang="scss">
   .stack {
+    display: flex;
+    flex-direction: column-reverse;
     position: relative;
     bottom: 0;
     height: fit-content;
-  }
-
-  .filter {
-    position: absolute;
-    bottom: 0;
-    left: -2%;
-    width: 104%;
-    z-index: 1;
   }
 
   .brick {
@@ -54,5 +47,6 @@
     height: 60px;
     border-radius: 12px;
     margin-top: 10px;
+    transition: opacity 0.5s;
   }
 </style>
