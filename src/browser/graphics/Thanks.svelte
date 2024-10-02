@@ -1,85 +1,42 @@
 <script lang="ts">
-  import Box from './lib/Box.svelte'
   import Container from './lib/Container.svelte'
-  import SlideBox from './lib/SlideBox.svelte'
-
-  // 9*7
-  const boxes = [...Array(63)].map((_, i) => i)
+  import Background from './lib/setup/Background.svelte'
 </script>
 
 <Container>
-  <div id="grid">
-    <div id="message-1" class="message">
-      <p>Thanks for all participators !</p>
-    </div>
-    <div id="message-2" class="message">
-      <p>See you again on next PGRF !</p>
-    </div>
+  <Background />
+  <div></div>
+  <div id="messages">
+    <p class="message">Thanks for all participators !</p>
+    <p class="message">See you again on next PGRF !</p>
+  </div>
+  <div id="logos">
     <img id="ome" src="/assets/pgrf5-layout/materials/ome.png" alt="OME" />
     <img
       id="pgrf5"
       src="/assets/pgrf5-layout/materials/pgrf5.png"
       alt="pgrf5"
     />
-    {#each boxes as box}
-      {#if Math.random() > 0.8}
-        <SlideBox />
-      {:else}
-        <Box />
-      {/if}
-    {/each}
   </div>
 </Container>
 
 <style lang="scss">
-  $columnSize: 9;
-  $boxSize: 220px;
-  $boxMargin: 10px;
-
-  #grid {
-    display: grid;
-    position: relative;
-    top: -200px;
-    left: -200px;
-    width: calc($boxSize * $columnSize);
-    height: calc($boxSize * $columnSize);
-    grid-template-rows: repeat($columnSize, $boxSize);
-    grid-template-columns: repeat($columnSize, $boxSize);
-    align-items: center;
-    gap: $boxMargin * 2;
-  }
-
   .message {
     display: flex;
     flex-direction: row;
     justify-content: center;
     font-family: 'Staatliches', sans-serif;
+    font-size: 4.8em;
     color: #505050;
   }
 
-  #message-1 {
-    grid-row: 3;
-    grid-column: 3 / 7;
-    font-size: 4.2em;
-  }
+  #logos {
+    align-self: flex-end;
+    margin-bottom: 16px;
+    margin-right: 16px;
 
-  #message-2 {
-    grid-row: 4;
-    grid-column: 4 / 8;
-    font-size: 4.2em;
-  }
-
-  img {
-    width: $boxSize;
-  }
-
-  #ome {
-    grid-row: 5;
-    grid-column: 7;
-  }
-
-  #pgrf5 {
-    grid-row: 5;
-    grid-column: 8;
+    img {
+      height: 160px;
+    }
   }
 </style>
