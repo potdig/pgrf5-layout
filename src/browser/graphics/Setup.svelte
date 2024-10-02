@@ -29,6 +29,15 @@
     maxWidthUpNext = divUpNext?.getBoundingClientRect().width
     maxWidthComingSoon = divComingSoon?.getBoundingClientRect().width
   }
+
+  const date = new Date()
+  // 10/5 : Day 1
+  const formattedDate = date.toLocaleDateString('ja-JP', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+  const day = date.getDay() - 5
 </script>
 
 <Container justifyBetween={false}>
@@ -102,6 +111,9 @@
       </div>
     {/if}
   </main>
+  <footer>
+    <p>{formattedDate}: Day {day}</p>
+  </footer>
 </Container>
 
 <style lang="scss">
@@ -180,5 +192,13 @@
       font-weight: bold;
       line-height: 1.2em;
     }
+  }
+
+  footer {
+    margin-top: auto;
+    font-family: 'Staatliches';
+    font-size: 3em;
+    color: dimgray;
+    text-align: center;
   }
 </style>
