@@ -22,4 +22,5 @@ build:
 	mv dist/src/browser/graphics/input dist/graphics && \
 	rm -r dist/src && \
 	npm run build:extension && \
+	rm -r assets graphics && \
 	mv dist/assets dist/graphics .
