@@ -1,5 +1,6 @@
 import { derived, readable, type Readable } from 'svelte/store'
 import type { SpeedControlNodeCG } from '~/browser/speedcontrol'
+import type { AdditionSocial } from '~/types/additions/speedcontrolUserAdditionArray'
 import type { FullSocial } from '~/types/player-with-social'
 import type { ActiveRunData } from '~/types/speedcontrol/replicant'
 import type { RunData } from '~/types/speedcontrol/run-data'
@@ -54,17 +55,16 @@ const runsOnSetup: Readable<RunData[]> = derived(
 
 const socialOf = (userId: string): Readable<FullSocial> =>
   derived([currentRun, additions], ([$currentRun, $additions]) => {
-    let social: FullSocial =
+    const social: AdditionSocial =
       $additions.find(addition => addition.id === userId)?.social ?? {}
-    console.log(social)
     const twitch = $currentRun?.teams
       .flatMap(team => team.players)
       .find(player => player.id === userId)?.social.twitch
+    const fullSocial: FullSocial = { ...social }
     if (twitch) {
-      social['twitch'] = twitch
+      fullSocial.twitch = twitch
     }
-    console.log(social)
-    return social
+    return fullSocial
   })
 
 export { currentRun, nextRun, runsOnSetup, socialOf }
