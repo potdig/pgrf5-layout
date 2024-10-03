@@ -14,7 +14,7 @@
   $: runComingSoon1 = $runsOnSetup[1]
   $: runComingSoon2 = $runsOnSetup[2]
 
-  $: commentatorsUpNext = commentatorsOf(runUpNext?.externalID ?? '')
+  $: commentatorsUpNext = commentatorsOf(runUpNext?.id ?? '')
   $: commentatorNamesUpNext = $commentatorsUpNext
     .map(commentator => commentator.name)
     .join(' / ')
@@ -86,7 +86,7 @@
             <p>Coming soon</p>
           {/if}
         </div>
-        <div>
+        <div style="opacity: 0.7">
           <p class="title">
             <TextFitSnugly maxWidth={maxWidthComingSoon}>
               {runComingSoon1?.game}
@@ -97,7 +97,7 @@
           {/if}
         </div>
         {#if runComingSoon2}
-          <div style="margin-top: 1rem;">
+          <div style="opacity: 0.4">
             <p class="title">
               <TextFitSnugly maxWidth={maxWidthComingSoon}>
                 {runComingSoon2?.game}
@@ -129,6 +129,7 @@
     #title {
       display: flex;
       align-items: center;
+      gap: 1em;
     }
   }
 
@@ -145,6 +146,7 @@
     line-height: 1em;
     text-align: center;
     font-size: 3em;
+    border-bottom: 2px solid black;
   }
 
   img {
@@ -186,6 +188,7 @@
     font-size: 1.4em;
     display: flex;
     flex-direction: column;
+    column-gap: 1rem;
 
     .title {
       font-size: 1.6em;
