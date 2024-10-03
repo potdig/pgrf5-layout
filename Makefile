@@ -21,10 +21,5 @@ build:
 	npm run build && \
 	mv dist/src/browser/graphics/input dist/graphics && \
 	rm -r dist/src && \
-	npm run build:extension
-build-prod:
-	npm run build && \
-	mv dist/src/browser/graphics/input dist/graphics && \
-	rm -r dist/src && \
 	npm run build:extension && \
 	mv dist/assets dist/graphics .

@@ -20,7 +20,7 @@ RUN apk --no-cache add git &&\
 FROM node:18-alpine AS speedcontrol_additions
 WORKDIR /app
 RUN apk --no-cache add git &&\
-    git clone https://github.com/potdig/speedcontrol-additions &&\
+    git clone https://github.com/cma2819/speedcontrol-additions &&\
     cd speedcontrol-additions &&\
     npm install --production
 
