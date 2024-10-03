@@ -20,7 +20,7 @@
   $: time = $timer?.time
   $: timerStatus = $timer?.state
   $: runners = $currentRun?.teams[0]?.players
-  $: commentators = commentatorsOf($currentRun?.externalID ?? '')
+  $: commentators = commentatorsOf($currentRun?.id ?? '')
 </script>
 
 <Container>

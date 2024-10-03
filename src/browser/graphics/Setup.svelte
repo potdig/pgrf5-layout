@@ -14,7 +14,7 @@
   $: runComingSoon1 = $runsOnSetup[1]
   $: runComingSoon2 = $runsOnSetup[2]
 
-  $: commentatorsUpNext = commentatorsOf(runUpNext?.externalID ?? '')
+  $: commentatorsUpNext = commentatorsOf(runUpNext?.id ?? '')
   $: commentatorNamesUpNext = $commentatorsUpNext
     .map(commentator => commentator.name)
     .join(' / ')
