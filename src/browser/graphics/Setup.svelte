@@ -5,7 +5,6 @@
   import Container from './lib/Container.svelte'
   import Background from './lib/setup/Background.svelte'
   import Clock from './lib/setup/Clock.svelte'
-  import TextFitSnugly from './lib/setup/TextFitSnugly.svelte'
 
   let divUpNext: HTMLElement
   let divComingSoon: HTMLElement
@@ -37,7 +36,7 @@
     month: '2-digit',
     day: '2-digit',
   })
-  const day = date.getDay() - 5
+  const day = date.getDate() - 4
 </script>
 
 <Container justifyBetween={false}>
@@ -60,9 +59,7 @@
         <p>Up next</p>
       </div>
       <p class="title">
-        <TextFitSnugly maxWidth={maxWidthUpNext}>
-          {runUpNext?.game}
-        </TextFitSnugly>
+        {runUpNext?.game}
       </p>
       {#if runUpNext?.category}
         <p class="category">{runUpNext?.category}</p>
@@ -88,9 +85,7 @@
         </div>
         <div style="opacity: 0.7">
           <p class="title">
-            <TextFitSnugly maxWidth={maxWidthComingSoon}>
-              {runComingSoon1?.game}
-            </TextFitSnugly>
+            {runComingSoon1?.game}
           </p>
           {#if runComingSoon1?.category}
             <p class="category">{runComingSoon1?.category}</p>
@@ -99,9 +94,7 @@
         {#if runComingSoon2}
           <div style="opacity: 0.4">
             <p class="title">
-              <TextFitSnugly maxWidth={maxWidthComingSoon}>
-                {runComingSoon2?.game}
-              </TextFitSnugly>
+              {runComingSoon2?.game}
             </p>
             {#if runComingSoon2?.category}
               <p class="category">{runComingSoon2?.category}</p>
