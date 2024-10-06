@@ -30,6 +30,11 @@
         "height": 1080
       },
       {
+        "file": "gba-solo.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "hd-race2.html",
         "width": 1920,
         "height": 1080
@@ -46,6 +51,11 @@
       },
       {
         "file": "sd-race4.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "gb-race4.html",
         "width": 1920,
         "height": 1080
       }
